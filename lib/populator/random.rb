@@ -8,6 +8,7 @@ module Populator
     def value_in_range(range)
       case range.first
       when Integer then number_in_range(range)
+      when Float then float_in_range(range)
       when Time then time_in_range(range)
       when Date then date_in_range(range)
       else range.to_a[rand(range.to_a.size)]
@@ -62,6 +63,10 @@ module Populator
       else
         rand((range.last+1) - range.first) + range.first
       end
+    end
+
+    def float_in_range(range)
+      rand * (range.max - range.min) + range.min
     end
   end
 
